@@ -1,9 +1,9 @@
 import express from 'express'
 import rndstring from 'randomstring'
 import bodyParser from 'body-parser'
-
+var cors = require('cors')();
 let app = express()
-
+app.use(cors)
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({limit: '1gb', extended: false }));
 
