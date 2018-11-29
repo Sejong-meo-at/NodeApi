@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-mongoose.connect('mongodb://localhost/qqqq');
+mongoose.connect('mongodb://localhost/qwerqwwe');
 mongoose.Promise = global.Promise;
 
 var db = mongoose.connection;
@@ -16,8 +16,8 @@ var UsersSchema = mongoose.Schema({
 })
 
 var WordsSchema = mongoose.Schema({
-  word: {type : String, unique: true}, // email
-  mean: {type : String},
+  word: {type : String}, // email
+  mean: {type : String}
 })
 
 var Users = mongoose.model('users', UsersSchema);

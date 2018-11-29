@@ -2,14 +2,14 @@ module.exports = word
 
 function word(app, Words) {
     app.post('/addWord', async (req,res)=>{
-        var word = new Words(req.body);
+        var new_word = new Words(req.body);
+        console.log('아니씨발')
         try {
-          var result = await word.save();
+          var result = await new_word.save();
         }catch(e){
-          if(e instanceof user_duplicate) return res.status(409).json({message:"already exist"});
-          if(e instanceof ValidationError) return res.status(400).json({message: e.message});
-          if(e instanceof paramsError) return res.status(400).json({message: e.message});
+            return res.status(500).json({message : "fail"})
         }
+        console.log('아니씨발')
         res.status(200).json({message : "success!"});
     })
     .post('/findWord', async (req,res)=>{
@@ -21,7 +21,7 @@ function word(app, Words) {
         let result = await Words.find()
         let str = req.body.str
         let ss = str
-        if(str.length >= 1){
+        if(str != ""){
             for(var i=0;result[i] != null;i++){
               ss = ss.replace(new RegExp(result[i].word,"gi"),result[i].mean);
             }
