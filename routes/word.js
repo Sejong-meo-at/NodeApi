@@ -22,9 +22,8 @@ function word(app, Words) {
         let str = req.body.str
         let ss = str
         if(str.length >= 1){
-            for(i=0;;i++){
-              if(!result[i]) break;
-              ss = ss.replace(new RegExp(result[i].word,"gi"),result[i].change);
+            for(var i=0;result[i] != null;i++){
+              ss = ss.replace(new RegExp(result[i].word,"gi"),result[i].mean);
             }
             res.status(200).send(ss);
         }

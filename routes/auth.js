@@ -6,7 +6,7 @@ function auth(app, Users, rndstring){
         if(!result) return res.status(404).json({message : "User Not Found"})
         res.status(200).json({token : result.token})
     })
-    .post('/signin', async(req,res)=>{
+    .post('/signup', async(req,res)=>{
         var user = new Users(req.body);
         user.token = rndstring.generate(25);
         try {
